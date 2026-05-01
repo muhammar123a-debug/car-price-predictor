@@ -6,8 +6,14 @@ import os
 
 app = Flask(__name__)
 df = pd.read_csv("cleaned.csv")
-model_path = os.path.join(os.path.dirname(__file__), 'LinearRegressionModel.pkl')
-model = pickle.load(open(model_path, 'rb'))
+current_dir = os.path.dirname(os.path.abspath(__file__))
+model_path = os.path.join(current_dir, 'LinearRegressionModel.pkl')
+
+try:
+    with open(model_path, 'rb') as f:
+        model = pickle.load(f)
+except Exception as e:
+    print(f"Error loading model: {e}")
 
 @app.route('/', methods=['GET','POST'])
 def index():
