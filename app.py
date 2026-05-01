@@ -4,7 +4,10 @@ import pickle
 import numpy as np
 
 app = Flask(__name__)
-model = pickle.load(open('LinearRegressionModel.pkl','rb'))
+try:
+    model = pickle.load(open('LinearRegressionModel.pkl', 'rb'))
+except Exception as e:
+    print(f"Error loading model: {e}")
 df = pd.read_csv("cleaned.csv")
 
 @app.route('/', methods=['GET','POST'])
