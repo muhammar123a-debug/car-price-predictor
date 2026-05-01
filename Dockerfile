@@ -14,4 +14,4 @@ RUN pip install -r requirements.txt
 
 
 # 5. App run karein
-CMD ["python", "application.py"]
+CMD ["python", "app.py"]
