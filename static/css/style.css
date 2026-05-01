@@ -1,0 +1,128 @@
+:root {
+    --accent: #00d2ff; /* Electric Blue */
+    --bg-dark: #0f172a;
+    --card-bg: rgba(30, 41, 59, 0.7);
+    --border: rgba(255, 255, 255, 0.1);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Poppins', sans-serif;
+    background-color: var(--bg-dark);
+    background-image: radial-gradient(circle at 50% 50%, #1e293b 0%, #0f172a 100%);
+    color: #f8fafc;
+    height: 100vh;
+    width: 100vw;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    overflow: hidden; /* No scroll */
+}
+
+.dashboard-container {
+    width: 90%;
+    max-width: 900px;
+    background: var(--card-bg);
+    backdrop-filter: blur(20px);
+    border: 1px solid var(--border);
+    border-radius: 30px;
+    padding: 40px;
+    box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+}
+
+.header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.header h1 {
+    font-size: 1.8rem;
+    font-weight: 600;
+    letter-spacing: 1px;
+    background: linear-gradient(to right, #fff, var(--accent));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.form-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 20px;
+}
+
+.input-box {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.input-box label {
+    font-size: 0.8rem;
+    color: #94a3b8;
+    margin-left: 5px;
+}
+
+.form-select, .form-control {
+    background: rgba(15, 23, 42, 0.6);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px;
+    color: white !important;
+    outline: none;
+    transition: 0.3s;
+}
+
+.form-select:focus, .form-control:focus {
+    border-color: var(--accent);
+    box-shadow: 0 0 10px rgba(0, 210, 255, 0.2);
+}
+
+/* Full width for KM input and Button */
+.full-width {
+    grid-column: span 2;
+}
+
+.btn-predict {
+    background: var(--accent);
+    color: #0f172a;
+    border: none;
+    padding: 15px;
+    border-radius: 12px;
+    font-weight: 600;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: 0.3s;
+    margin-top: 10px;
+}
+
+.btn-predict:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0 20px rgba(0, 210, 255, 0.4);
+}
+
+.result-area {
+    margin-top: 25px;
+    text-align: center;
+    padding: 15px;
+    background: rgba(0, 210, 255, 0.05);
+    border-radius: 15px;
+    border: 1px dashed var(--accent);
+}
+
+.price-text {
+    font-size: 1.5rem;
+    color: var(--accent);
+    font-weight: 600;
+}
+
+/* Mobile fix */
+@media (max-width: 600px) {
+    .form-grid { grid-template-columns: 1fr; }
+    .full-width { grid-column: span 1; }
+    .dashboard-container { padding: 20px; height: auto; }
+}

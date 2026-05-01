@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Car Valuator</title>
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+</head>
+<body>
+
+<div class="dashboard-container">
+    <div class="header">
+        <h1>Car Price Predictor</h1>
+    </div>
+
+    <form method="POST" action="/" class="form-grid">
+        <div class="input-box">
+            <label>Brand</label>
+            <select name="company" class="form-select" required>
+                <option value="" disabled selected>Select Brand</option>
+                {% for company in companies %}
+                <option value="{{ company }}">{{ company }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="input-box">
+            <label>Model</label>
+            <select name="car_models" class="form-select" required>
+                <option value="" disabled selected>Select Model</option>
+                {% for model in car_models %}
+                <option value="{{ model }}">{{ model }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="input-box">
+            <label>Year</label>
+            <select name="year" class="form-select" required>
+                {% for y in year %}
+                <option value="{{ y }}">{{ y }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="input-box">
+            <label>Fuel Type</label>
+            <select name="fuel_type" class="form-select" required>
+                {% for fuel in fuel_type %}
+                <option value="{{ fuel }}">{{ fuel }}</option>
+                {% endfor %}
+            </select>
+        </div>
+
+        <div class="input-box full-width">
+            <label>Kilometres Driven</label>
+            <input type="number" name="kilo_driven" class="form-control" placeholder="Enter KM" required>
+        </div>
+
+        <button type="submit" class="btn-predict full-width">Check Valuation</button>
+
+        {% if prediction %}
+        <div class="result-area full-width">
+            <p style="color: #94a3b8; font-size: 0.9rem;">Estimated Price</p>
+            <div class="price-text">{{ prediction }}</div>
+        </div>
+        {% endif %}
+    </form>
+</div>
+
+</body>
+</html>
